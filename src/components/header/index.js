@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { HeaderWrapper, Logo, Nav, NavItem, NavIcon, SearchWrapper, SearchInput, SearchIcon, BtnWrapper, Btn } from './style';
+import { HeaderWrapper, Logo, Nav, NavItem, NavIcon, SearchWrapper, SearchInput, SearchIcon, BtnWrapper, Btn, SearchInfo, SearchInfoTitle, SearchInfoSwitch, SearchInfoItem } from './style';
 import { CSSTransition } from 'react-transition-group';
-import { changeInputFocusAction } from '../../store/action.creator';
+import { changeInputFocusAction } from '../../store/header/action.creator';
 import { connect } from 'react-redux';
 
 class HeaderComponent extends Component {
@@ -35,6 +35,22 @@ class HeaderComponent extends Component {
                   <SearchInput onFocus={this.handleInputFocus} onBlur={this.handleInputBlur} className={this.props.focused ? 'focused' : ''}/>
                 </CSSTransition>
                 <SearchIcon className={this.props.focused ? 'iconfont icon-search focused' : 'iconfont icon-search'} />
+                <SearchInfo>
+                  <SearchInfoTitle>
+                    热门搜索
+                    <SearchInfoSwitch>
+                      <i className="iconfont .icon-icon--" style={{width: '16px'}} />
+                      换一批
+                    </SearchInfoSwitch>
+                  </SearchInfoTitle>
+                  <div>
+                    <SearchInfoItem>教育</SearchInfoItem>
+                    <SearchInfoItem>教育</SearchInfoItem>
+                    <SearchInfoItem>教育</SearchInfoItem>
+                    <SearchInfoItem>教育</SearchInfoItem>
+                    <SearchInfoItem>教育</SearchInfoItem>
+                  </div>
+                </SearchInfo>
               </SearchWrapper>
           </Nav>
           <BtnWrapper>
@@ -61,7 +77,7 @@ class HeaderComponent extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    focused: state.focused
+    focused: state.getIn(['header', 'focused'])
   }
 }
 
