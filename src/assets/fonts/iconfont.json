@@ -1,0 +1,65 @@
+{
+  "id": "1250769",
+  "name": "jianshu",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "705699",
+      "name": "指南针",
+      "font_class": "zhinanzhen",
+      "unicode": "e62f",
+      "unicode_decimal": 58927
+    },
+    {
+      "icon_id": "755541",
+      "name": "放大镜",
+      "font_class": "search",
+      "unicode": "e623",
+      "unicode_decimal": 58915
+    },
+    {
+      "icon_id": "1388585",
+      "name": "钻石",
+      "font_class": "zuanshi",
+      "unicode": "e680",
+      "unicode_decimal": 59008
+    },
+    {
+      "icon_id": "1621077",
+      "name": "Aa",
+      "font_class": "Aa",
+      "unicode": "e636",
+      "unicode_decimal": 58934
+    },
+    {
+      "icon_id": "3216095",
+      "name": "刷新",
+      "font_class": "icon--",
+      "unicode": "e71e",
+      "unicode_decimal": 59166
+    },
+    {
+      "icon_id": "3481899",
+      "name": "手机",
+      "font_class": "shouji",
+      "unicode": "e671",
+      "unicode_decimal": 58993
+    },
+    {
+      "icon_id": "5244556",
+      "name": "笔",
+      "font_class": "bi",
+      "unicode": "e617",
+      "unicode_decimal": 58903
+    },
+    {
+      "icon_id": "6120397",
+      "name": "beta",
+      "font_class": "beta",
+      "unicode": "e618",
+      "unicode_decimal": 58904
+    }
+  ]
+}
