@@ -1,96 +1,93 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import { 
-  HeaderWrapper, 
-  Logo, 
-  Nav, 
-  NavItem, 
-  NavIcon, 
-  NavSearchWrapper, 
-  Addition, 
-  Btn, 
-  SearchInput, 
-  SearchIcon } from './style'
-import { CSSTransition } from 'react-transition-group'
-
-import {changeInputFocusAction} from '../../store/action.creator'
+import React, { Component } from 'react';
+import { HeaderWrapper, Logo, Nav, NavItem, NavIcon, SearchWrapper, SearchInput, SearchIcon, BtnWrapper, Btn, SearchInfo, SearchInfoTitle, SearchInfoSwitch, SearchInfoItem } from './style';
+import { CSSTransition } from 'react-transition-group';
+import { changeInputFocusAction } from '../../store/header/action.creator';
+import { connect } from 'react-redux';
 
 class HeaderComponent extends Component {
   constructor (props) {
     super(props)
-    this.state = {
-      currentItem: 'index',
-      inputValue: ''
-    }
+    this.state = {}
   }
-
   render () {
     return (
-      <HeaderWrapper>
-        <Logo />
-        <Nav>
-          <NavItem pull="left" active={this.state.currentItem === 'index'} onClick={() => {this.handleClickItem('index')}}>
-            <NavIcon className="iconfont icon-zhinanzhen" />
-            <span>首页</span>
-          </NavItem>
-          <NavItem pull="left" active={this.state.currentItem === 'download-app'} onClick={() => {this.handleClickItem('download-app')}}>
-            <NavIcon className="iconfont icon-shouji" />
-            <span>下载app</span>
-          </NavItem>
-          <NavItem pull="right" active={this.state.currentItem === 'a'} onClick={() => {this.handleClickItem('a')}}>
-            <NavIcon className="iconfont icon-Aa" />
-          </NavItem>
-          <NavItem pull="right" active={this.state.currentItem === 'vip'} onClick={() => {this.handleClickItem('vip')}}>
-            <NavIcon className="iconfont icon-zuanshi" />
-            <NavIcon className="iconfont icon-beta" />
-          </NavItem>
-          <NavSearchWrapper>
-            <CSSTransition in={this.props.focused} timeout={500} classNames="slide">
-              <SearchInput className={this.props.focused ? 'focused' : ''} onFocus={this.handleInputFocus} onBlur={this.handleInputBlur}/>
-            </CSSTransition>
-            <SearchIcon className={this.props.focused ? 'focused iconfont icon-search' : 'iconfont icon-search'} />
-          </NavSearchWrapper>
-        </Nav>
-        <Addition>
-          <Btn className="default">注册</Btn>
-          <Btn className="primary">
-            <i className="iconfont icon-bi" />
-            写文章
-          </Btn>
-        </Addition>
-      </HeaderWrapper>
+      <div className="header">
+        <HeaderWrapper>
+          <Logo />
+          <Nav>
+            <NavItem float="left">
+              <NavIcon className="iconfont icon-zhinanzhen" />
+              首页
+            </NavItem>
+            <NavItem float="left">
+              <NavIcon className="iconfont icon-shouji" />
+              下载App
+            </NavItem>
+            <NavItem float="right">
+              <NavIcon className="iconfont icon-Aa" />
+            </NavItem>
+            <NavItem float="right">
+              <NavIcon className="iconfont icon-zuanshi" />
+              <NavIcon className="iconfont icon-beta" />
+            </NavItem>
+              <SearchWrapper>
+                <CSSTransition in={this.props.focused} timeout={500} classNames="slide">
+                  <SearchInput onFocus={this.handleInputFocus} onBlur={this.handleInputBlur} className={this.props.focused ? 'focused' : ''}/>
+                </CSSTransition>
+                <SearchIcon className={this.props.focused ? 'iconfont icon-search focused' : 'iconfont icon-search'} />
+                <SearchInfo>
+                  <SearchInfoTitle>
+                    热门搜索
+                    <SearchInfoSwitch>
+                      <i className="iconfont .icon-icon--" style={{width: '16px'}} />
+                      换一批
+                    </SearchInfoSwitch>
+                  </SearchInfoTitle>
+                  <div>
+                    <SearchInfoItem>教育</SearchInfoItem>
+                    <SearchInfoItem>教育</SearchInfoItem>
+                    <SearchInfoItem>教育</SearchInfoItem>
+                    <SearchInfoItem>教育</SearchInfoItem>
+                    <SearchInfoItem>教育</SearchInfoItem>
+                  </div>
+                </SearchInfo>
+              </SearchWrapper>
+          </Nav>
+          <BtnWrapper>
+            <Btn type="text">登录</Btn>
+            <Btn>注册</Btn>
+            <Btn type="primary">
+              <i className="iconfont icon-bi" />
+              写文章
+            </Btn>
+          </BtnWrapper>
+        </HeaderWrapper>
+      </div>
     )
   }
 
-  handleClickItem = (item) => {
-    this.setState(() =>({
-      currentItem: item
-    }))
-  }
-
-  handleInputFocus = () => {    
-    this.props.changeInputfocus()
+  handleInputFocus = () => {
+    this.props.changeInputFocus()
   }
 
   handleInputBlur = () => {
-    this.props.changeInputfocus()
+    this.props.changeInputFocus()
   }
 }
 
 const mapStateToProps = (state) => {
   return {
-    focused: state.focused
+    focused: state.getIn(['header', 'focused'])
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    changeInputfocus () {
-
+    changeInputFocus() {
       const action = changeInputFocusAction()
       dispatch(action)
     }
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(HeaderComponent)
+export default connect(mapStateToProps, mapDispatchToProps)(HeaderComponent);
