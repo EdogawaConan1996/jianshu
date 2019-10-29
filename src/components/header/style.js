@@ -154,6 +154,7 @@ export const SearchInfoTitle = styled.div`
 export const SearchInfoSwitch = styled.span`
   float: right;
   font-size: 13px;
+  cursor: pointer;
 `;
 
 export const SearchInfoItem = styled.a`
@@ -171,4 +172,13 @@ export const SearchInfoItem = styled.a`
   &::hover {
     color: #333;
   }
+`;
+
+export const ChangeIcon = styled.div`
+  display: inline-block;
+  font-size: 12px;
+  line-height: 20px;
+  margin-right: 5px;
+  transition: all 1s ease-in;
+  transform-origin: center center;
 `;

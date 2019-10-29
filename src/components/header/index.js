@@ -1,14 +1,39 @@
 import React, { Component } from 'react';
-import { HeaderWrapper, Logo, Nav, NavItem, NavIcon, SearchWrapper, SearchInput, SearchIcon, BtnWrapper, Btn, SearchInfo, SearchInfoTitle, SearchInfoSwitch, SearchInfoItem } from './style';
+import {
+  HeaderWrapper,
+  Logo,
+  Nav,
+  NavItem,
+  NavIcon,
+  SearchWrapper,
+  SearchInput,
+  SearchIcon,
+  BtnWrapper,
+  Btn,
+  SearchInfo,
+  SearchInfoTitle,
+  SearchInfoSwitch,
+  SearchInfoItem,
+  ChangeIcon
+} from './style';
 import { CSSTransition } from 'react-transition-group';
-import { changeInputFocusAction } from '../../store/header/action.creator';
+import { changeInputFocusAction, getSearchInfoListAction, setCurrentPageAction } from '../../store/header/action.creator';
 import { connect } from 'react-redux';
 
 class HeaderComponent extends Component {
   constructor (props) {
     super(props)
-    this.state = {}
+    this.state = {
+      showSearchInfo: false,
+      infoList: []
+    }
+    this.changeIcon = null
   }
+
+  componentDidMount () {
+    this.props.getSearchInfoList()
+  }
+
   render () {
     return (
       <div className="header">
@@ -35,20 +60,16 @@ class HeaderComponent extends Component {
                   <SearchInput onFocus={this.handleInputFocus} onBlur={this.handleInputBlur} className={this.props.focused ? 'focused' : ''}/>
                 </CSSTransition>
                 <SearchIcon className={this.props.focused ? 'iconfont icon-search focused' : 'iconfont icon-search'} />
-                <SearchInfo>
+                <SearchInfo style={{display: this.state.showSearchInfo ? 'block' : 'none'}} onMouseLeave={this.hideSearchInfo}>
                   <SearchInfoTitle>
                     热门搜索
-                    <SearchInfoSwitch>
-                      <i className="iconfont .icon-icon--" style={{width: '16px'}} />
+                    <SearchInfoSwitch onClick={this.handleChangeIcon}>
+                      <ChangeIcon ref={(el) => {this.changeIcon = el}} className="iconfont icon-icon--" />
                       换一批
                     </SearchInfoSwitch>
                   </SearchInfoTitle>
                   <div>
-                    <SearchInfoItem>教育</SearchInfoItem>
-                    <SearchInfoItem>教育</SearchInfoItem>
-                    <SearchInfoItem>教育</SearchInfoItem>
-                    <SearchInfoItem>教育</SearchInfoItem>
-                    <SearchInfoItem>教育</SearchInfoItem>
+                    {this.renderSearchInfoList()}
                   </div>
                 </SearchInfo>
               </SearchWrapper>
@@ -66,18 +87,61 @@ class HeaderComponent extends Component {
     )
   }
 
+  renderSearchInfoList = () => {
+    return this.state.infoList.map((item,index) => {
+      console.log(item,index)
+      return (
+        <SearchInfoItem key={index}>{item}</SearchInfoItem>
+      )
+    })
+  }
+
   handleInputFocus = () => {
     this.props.changeInputFocus()
+    this.setState(() => ({
+      showSearchInfo: true
+    }))
   }
 
   handleInputBlur = () => {
     this.props.changeInputFocus()
   }
+  hideSearchInfo = () => {
+    this.setState(() => ({
+      showSearchInfo: false
+    }))
+  }
+  handleChangeIcon = () => {
+    const transform = this.changeIcon.style.transform
+    if (transform) {
+      let angle = parseInt(transform.substring(transform.indexOf('(')+1, transform.indexOf('deg')))
+      angle += 360
+      this.changeIcon.style.transform = `rotate(${angle}deg)`
+    } else {
+      this.changeIcon.style.transform = 'rotate(360deg)'
+    }
+    let page = this.props.currentPage + 1 > this.props.totalPage ? 1 : this.props.currentPage + 1
+    this.props.changeCurrentPage(page)
+    const list = []
+    console.log(this.props.searchInfoList)
+    for (let i = (page - 1) * 10; i < page * 10; i++) {
+      if (i === this.props.searchInfoList.length) {
+        break
+      }
+      list.push(this.props.searchInfoList[i])
+    }
+    this.setState(() => ({
+      infoList: list
+    }))
+  }
 }
 
 const mapStateToProps = (state) => {
   return {
-    focused: state.getIn(['header', 'focused'])
+    focused: state.getIn(['header', 'focused']),
+    searchInfoList: state.getIn(['header','searchInfoList']),
+    totalPage: state.getIn(['header', 'totalPage']),
+    currentPage: state.getIn(['header', 'currentPage'])
   }
 }
 
@@ -85,6 +149,14 @@ const mapDispatchToProps = (dispatch) => {
   return {
     changeInputFocus() {
       const action = changeInputFocusAction()
+      dispatch(action)
+    },
+    getSearchInfoList () {
+      const action = getSearchInfoListAction()
+      dispatch(action)
+    },
+    changeCurrentPage (page) {
+      const action = setCurrentPageAction(page)
       dispatch(action)
     }
   }
