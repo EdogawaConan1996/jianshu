@@ -88,8 +88,7 @@ class HeaderComponent extends Component {
   }
 
   renderSearchInfoList = () => {
-    return this.state.infoList.map((item,index) => {
-      console.log(item,index)
+    return this.props.searchInfoList.map((item,index) => {
       return (
         <SearchInfoItem key={index}>{item}</SearchInfoItem>
       )
@@ -122,17 +121,6 @@ class HeaderComponent extends Component {
     }
     let page = this.props.currentPage + 1 > this.props.totalPage ? 1 : this.props.currentPage + 1
     this.props.changeCurrentPage(page)
-    const list = []
-    console.log(this.props.searchInfoList)
-    for (let i = (page - 1) * 10; i < page * 10; i++) {
-      if (i === this.props.searchInfoList.length) {
-        break
-      }
-      list.push(this.props.searchInfoList[i])
-    }
-    this.setState(() => ({
-      infoList: list
-    }))
   }
 }
 
