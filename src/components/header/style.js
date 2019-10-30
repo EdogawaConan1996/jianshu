@@ -154,6 +154,7 @@ export const SearchInfoTitle = styled.div`
 export const SearchInfoSwitch = styled.div`
   float: right;
   font-size: 13px;
+  cursor: pointer;
 `;
 
 export const SearchInfoItem = styled.a`
@@ -173,16 +174,11 @@ export const SearchInfoItem = styled.a`
   }
 `;
 
-export const  RefreshIcon = styled.div.attrs({
-  ref: 'changeIcon'
-})`
+export const ChangeIcon = styled.div`
   display: inline-block;
+  font-size: 12px;
   line-height: 20px;
-  color: #ccc;
   margin-right: 5px;
-  font-size: 13px;
-  font-weight: 700;
+  transition: all 1s ease-in;
   transform-origin: center center;
-  transform: rotate(0deg);
-  transition: all 0.5s ease-out;
 `;
