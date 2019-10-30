@@ -151,7 +151,7 @@ export const SearchInfoTitle = styled.div`
   color: #969696;
 `;
 
-export const SearchInfoSwitch = styled.span`
+export const SearchInfoSwitch = styled.div`
   float: right;
   font-size: 13px;
 `;
@@ -171,4 +171,18 @@ export const SearchInfoItem = styled.a`
   &::hover {
     color: #333;
   }
+`;
+
+export const  RefreshIcon = styled.div.attrs({
+  ref: 'changeIcon'
+})`
+  display: inline-block;
+  line-height: 20px;
+  color: #ccc;
+  margin-right: 5px;
+  font-size: 13px;
+  font-weight: 700;
+  transform-origin: center center;
+  transform: rotate(0deg);
+  transition: all 0.5s ease-out;
 `;

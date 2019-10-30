@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { HeaderWrapper, Logo, Nav, NavItem, NavIcon, SearchWrapper, SearchInput, SearchIcon, BtnWrapper, Btn, SearchInfo, SearchInfoTitle, SearchInfoSwitch, SearchInfoItem } from './style';
+import { HeaderWrapper, Logo, Nav, NavItem, NavIcon, SearchWrapper, SearchInput, SearchIcon, BtnWrapper, Btn, SearchInfo, SearchInfoTitle, SearchInfoSwitch, SearchInfoItem, RefreshIcon } from './style';
 import { CSSTransition } from 'react-transition-group';
 import { changeInputFocusAction } from '../../store/header/action.creator';
 import { connect } from 'react-redux';
@@ -7,7 +7,10 @@ import { connect } from 'react-redux';
 class HeaderComponent extends Component {
   constructor (props) {
     super(props)
-    this.state = {}
+    this.state = {
+      showSearchInfo: false
+    }
+    this.changeIcon = null
   }
   render () {
     return (
@@ -35,11 +38,11 @@ class HeaderComponent extends Component {
                   <SearchInput onFocus={this.handleInputFocus} onBlur={this.handleInputBlur} className={this.props.focused ? 'focused' : ''}/>
                 </CSSTransition>
                 <SearchIcon className={this.props.focused ? 'iconfont icon-search focused' : 'iconfont icon-search'} />
-                <SearchInfo>
+                <SearchInfo onMouseLeave={this.hideSearchInfo} style={{display: this.state.showSearchInfo ? 'block' : 'none'}}>
                   <SearchInfoTitle>
                     热门搜索
                     <SearchInfoSwitch>
-                      <i className="iconfont .icon-icon--" style={{width: '16px'}} />
+                      <RefreshIcon className="iconfont icon-icon--" onClick={this.handleChangeInfo}/>
                       换一批
                     </SearchInfoSwitch>
                   </SearchInfoTitle>
@@ -68,10 +71,30 @@ class HeaderComponent extends Component {
 
   handleInputFocus = () => {
     this.props.changeInputFocus()
+    this.setState(() => ({
+      showSearchInfo: true
+    }))
   }
 
   handleInputBlur = () => {
     this.props.changeInputFocus()
+  }
+
+  hideSearchInfo = () => {
+    this.setState(() => ({
+      showSearchInfo: false
+    }))
+  }
+
+  handleChangeInfo = () => {
+    if (this.refs.changeIcon.style.transform) {
+      const str = this.refs.changeIcon.style.transform
+      const deg = str.substr(0, str.indexOf('deg'))
+      console.log(deg)
+    } else {
+      this.refs.changeIcon.style.transform = `360deg`;
+      console.log(this.refs.changeIcon.style.transform)
+    }
   }
 }
 
