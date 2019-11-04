@@ -55,24 +55,24 @@ class HeaderComponent extends Component {
               <NavIcon className="iconfont icon-zuanshi" />
               <NavIcon className="iconfont icon-beta" />
             </NavItem>
-              <SearchWrapper>
-                <CSSTransition in={this.props.focused} timeout={500} classNames="slide">
-                  <SearchInput onFocus={this.handleInputFocus} onBlur={this.handleInputBlur} className={this.props.focused ? 'focused' : ''}/>
-                </CSSTransition>
-                <SearchIcon className={this.props.focused ? 'iconfont icon-search focused' : 'iconfont icon-search'} />
-                <SearchInfo style={{display: this.state.showSearchInfo ? 'block' : 'none'}} onMouseLeave={this.hideSearchInfo}>
-                  <SearchInfoTitle>
-                    热门搜索
-                    <SearchInfoSwitch onClick={this.handleChangeIcon}>
-                      <ChangeIcon ref={(el) => {this.changeIcon = el}} className="iconfont icon-icon--" />
-                      换一批
-                    </SearchInfoSwitch>
-                  </SearchInfoTitle>
-                  <div>
-                    {this.renderSearchInfoList()}
-                  </div>
-                </SearchInfo>
-              </SearchWrapper>
+            <SearchWrapper>
+              <CSSTransition in={this.props.focused} timeout={500} classNames="slide">
+                <SearchInput onFocus={this.handleInputFocus} onBlur={this.handleInputBlur} className={this.props.focused ? 'focused' : ''}/>
+              </CSSTransition>
+              <SearchIcon className={this.props.focused ? 'iconfont icon-search focused' : 'iconfont icon-search'} />
+              <SearchInfo style={{display: this.state.showSearchInfo ? 'block' : 'none'}} onMouseLeave={this.hideSearchInfo}>
+                <SearchInfoTitle>
+                  热门搜索
+                  <SearchInfoSwitch onClick={this.handleChangeIcon}>
+                    <ChangeIcon ref={(el) => {this.changeIcon = el}} className="iconfont icon-icon--" />
+                    换一批
+                  </SearchInfoSwitch>
+                </SearchInfoTitle>
+                <div>
+                  {this.renderSearchInfoList()}
+                </div>
+              </SearchInfo>
+            </SearchWrapper>
           </Nav>
           <BtnWrapper>
             <Btn type="text">登录</Btn>
@@ -88,8 +88,7 @@ class HeaderComponent extends Component {
   }
 
   renderSearchInfoList = () => {
-    return this.state.infoList.map((item,index) => {
-      console.log(item,index)
+    return this.props.searchInfoList.map((item,index) => {
       return (
         <SearchInfoItem key={index}>{item}</SearchInfoItem>
       )
@@ -122,17 +121,6 @@ class HeaderComponent extends Component {
     }
     let page = this.props.currentPage + 1 > this.props.totalPage ? 1 : this.props.currentPage + 1
     this.props.changeCurrentPage(page)
-    const list = []
-    console.log(this.props.searchInfoList)
-    for (let i = (page - 1) * 10; i < page * 10; i++) {
-      if (i === this.props.searchInfoList.length) {
-        break
-      }
-      list.push(this.props.searchInfoList[i])
-    }
-    this.setState(() => ({
-      infoList: list
-    }))
   }
 }
 

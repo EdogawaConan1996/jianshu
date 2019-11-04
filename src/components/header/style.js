@@ -60,7 +60,7 @@ export const SearchWrapper = styled.div`
   position: relative;
   display: inline-block;
   height: 38px;
-  margin: 9px 0;
+  margin: 9px 0 9px 20px;
   background-color: #ccc;
   border-radius: 19px;
   padding: 0 40px 0 20px;
@@ -151,7 +151,7 @@ export const SearchInfoTitle = styled.div`
   color: #969696;
 `;
 
-export const SearchInfoSwitch = styled.span`
+export const SearchInfoSwitch = styled.div`
   float: right;
   font-size: 13px;
   cursor: pointer;
