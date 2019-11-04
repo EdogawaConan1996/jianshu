@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="5bc3e557-9507-4eab-b236-e69be0d86c0f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/header/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/header/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/header/style.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/header/style.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -13,6 +11,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
+    <option name="PUSH_AUTO_UPDATE" value="true" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1ShEYzJh4oypD19tidT3h226knG" />
@@ -66,6 +65,7 @@
       <workItem from="1572007480071" duration="97000" />
       <workItem from="1572014064476" duration="3430000" />
       <workItem from="1572363869905" duration="324000" />
+      <workItem from="1572527405789" duration="17000" />
     </task>
     <servers />
   </component>
