@@ -1,8 +1,8 @@
 import React from 'react';
 import HeaderComponent from './components/header';
 import {BrowserRouter, Route} from 'react-router-dom';
-import IndexPage from './pages/index';
 import DetailPage from './pages/detail';
+import HomePage from './pages/home';
 
 
 function App() {
@@ -11,7 +11,7 @@ function App() {
       <HeaderComponent />
       <BrowserRouter>
         <div>
-          <Route path="/" exact component={IndexPage}></Route>
+          <Route path="/" exact component={HomePage}></Route>
           <Route path="/detail" exact component={DetailPage}></Route>
         </div>
       </BrowserRouter>
