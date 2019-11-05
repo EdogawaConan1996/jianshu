@@ -1,4 +1,5 @@
-import styled from "styled-components";
+import styled from "styled-components"
+import adImg from '../../assets/img/ad.png'
 
 export const IndexWrapper = styled.div`
   overflow: hidden;
@@ -42,6 +43,10 @@ export const BroadItem = styled.img`
 `;
 
 export const DownLoadAppWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-items: center;
+  justify-content: center;
   padding: 10px 22px;
   height: 60px;
   border: 1px solid #f0f0f0;
@@ -51,10 +56,9 @@ export const DownLoadAppWrapper = styled.div`
     height: 60px;
   }
   .info {
-    display: inline-block;
     width: 143px;
     height: 43px;
-    margin-left: 7px;
+    margin: auto 0 auto 7px;
     .title {
       font-size: 15px;
       color: #333;
@@ -63,6 +67,78 @@ export const DownLoadAppWrapper = styled.div`
       margin-top: 4px;
       font-size: 12px;
       color: #999;
+    }
+  }
+`;
+
+export const AdLink = styled.a`
+  position: relative;
+  display: block;
+  height: 160px;
+  margin: 20px 0;
+  background: transparent url(${adImg}) center center no-repeat;
+  background-size: contain;
+  &::after {
+    content: '广告';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(0,0,0,.5);
+    color: #fff;
+    font-size: 10px;
+    padding: 5px;
+  }
+`;
+
+export const ArticleWrapper = styled.div`
+  width: 100%;
+`;
+
+export const ArticleList = styled.ul`
+  width: 100%;
+  height: 100%;
+`;
+
+export const ArticleItem = styled.li`
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  min-height: 140px;
+  margin-bottom: 15px;
+  padding: 15px 2px 20px 0;
+  border-bottom: 1px solid #f0f0f0;
+  .img-wrap {
+    width: 150px;
+    height: 100px;
+    margin: auto 0;
+  }
+  .content {
+    width: 458px;
+    margin-right: 10px;
+    .title {
+      margin: -7px 0 4px;
+      font-size: 18px;
+      font-weight: 700;
+      line-height: 1.5;
+      color: #000;
+    }
+    .desc {
+      margin: 0 0 8px;
+      font-size: 13px;
+      line-height: 24px;
+      color: #999;
+    }
+    .meta {
+      font-size: 12px;
+      font-weight: 400;
+      line-height: 20px;
+      .zuanshi-meta,.author-meta,.comment-meta,.collect-meta {
+        margin-right: 10px;
+        color: #999;
+      }
+      .zuanshi-meta {
+        color: #ea6f5a;
+      }
     }
   }
 `;
