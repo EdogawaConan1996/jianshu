@@ -1,9 +1,11 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 
 class DetailPage extends Component {
-  render () {
+  render() {
     return (
-      <div>详情页面</div>
+      <div className="detail">
+        Detail Page
+      </div>
     )
   }
 }

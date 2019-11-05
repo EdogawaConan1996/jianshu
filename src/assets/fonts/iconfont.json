@@ -34,6 +34,13 @@
       "unicode_decimal": 58934
     },
     {
+      "icon_id": "2887779",
+      "name": "收 藏",
+      "font_class": "collect-active",
+      "unicode": "e60e",
+      "unicode_decimal": 58894
+    },
+    {
       "icon_id": "3216095",
       "name": "刷新",
       "font_class": "icon--",
@@ -60,6 +67,13 @@
       "font_class": "beta",
       "unicode": "e618",
       "unicode_decimal": 58904
+    },
+    {
+      "icon_id": "11460586",
+      "name": "聊天 气泡 实心",
+      "font_class": "liaotianqipaoshixin",
+      "unicode": "e614",
+      "unicode_decimal": 58900
     }
   ]
 }
