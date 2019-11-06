@@ -142,3 +142,44 @@ export const ArticleItem = styled.li`
     }
   }
 `;
+
+export const RecommendAuthorWrapper = styled.div`
+  margin-top: 20px;
+  .top {
+    overflow: hidden;
+    font-size: 14px;
+    color: #969696;
+    .title {
+      float: left;
+    }
+    .change-wrapper {
+      float: right;
+    }
+  }
+`;
+
+export const ChangeIcon = styled.div`
+  display: inline-block;
+  font-size: 12px;
+  line-height: 20px;
+  margin-right: 5px;
+  transition: all 1s ease-in;
+  transform-origin: center center;
+`;
+
+export const MoreAuthorBtn = styled.div`
+  box-sizing: border-box;
+  margin: 0 auto;
+  padding: 7px 7px 7px 12px;
+  width: 100%;
+  height: 34px;
+  line-height: 20px;
+  font-size: 13px;
+  color: #787878;
+  background-color: #f7f7f7;
+  border: 1px solid #dcdcdc;
+  border-radius: 4px;
+  text-align: center; 
+`;
+
+

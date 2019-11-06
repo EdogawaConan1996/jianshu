@@ -182,3 +182,51 @@ export const ChangeIcon = styled.div`
   transition: all 1s ease-in;
   transform-origin: center center;
 `;
+
+export const AuthorList = styled.ul`
+  margin-bottom: 20px;
+  li {
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: row;
+    justify-items: center;
+    .img-wrapper {
+      width: 48px;
+      height: 48px;
+      margin-right: 10px;
+      border: 1px solid #f0f0f0;
+      border-radius: 50%;
+      img {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+      }
+    }
+    .main-content {
+      width: 220px;
+      margin-top: 5px;
+      margin-bottom: 10px;
+      .top {
+        margin-bottom: 15px;
+        .left {
+          float: left;
+          margin-right: 60px;
+          font-size: 14px;
+          color: #000;
+        }
+        .right {
+          float: right;
+          padding: 0;
+          font-size: 13px;
+          color: #42c02e;
+        }
+      }
+      .meta {
+        margin-top: 2px;
+        margin-bottom: 10px;
+        font-size: 12px;
+        color: #969696;
+      }
+    }
+  }
+`;
