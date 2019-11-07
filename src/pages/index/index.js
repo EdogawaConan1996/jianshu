@@ -9,7 +9,7 @@ import qrCode from '../../assets/img/qrcode.png'
 import articleImg from '../../assets/img/article/13686029-0cf7ba315bd577cc.jpg'
 import { AuthorList } from '../../components/header/style'
 import AvatarImg from '../../assets/img/avatar/189d69dd-af7c-4290-9e2c-89e98acf3603.webp'
-import { getArticleListAction } from '../../store/index/action.creator'
+import {getArticleListAction, getAuthorListAction} from '../../store/index/action.creator'
 
 class IndexPage extends Component {
   constructor(props) {
@@ -24,111 +24,7 @@ class IndexPage extends Component {
           <BannerImg />
           <ArticleWrapper>
             <ArticleList>
-              <ArticleItem>
-                <div className="content">
-                  <a href="/" className="title">
-                    <h4>浙大学霸作息表曝光：世界本不公平，你有多努力，就有多特殊</h4>
-                  </a>
-                  <p className="desc">头等舱可以优先登机， 银行VIP可以免排队， 演唱会最贵的门票位置最好， ...... 这个世界，似乎从来不平等。 但是，你有多努力，就有多特殊...</p>
-                  <div className="meta">
-                    <span className="zuanshi-meta">
-                      <i className="iconfont icon-zuanshi"></i>
-                      89.6
-                    </span>
-                    <span className="author-meta">
-                      多哥朵妹
-                    </span>
-                    <span className="comment-meta">
-                      <i className="iconfont icon-liaotianqipaoshixin"></i>
-                      123
-                    </span>
-                    <span className="collect-meta">
-                      <i className="iconfont icon-collect-active"></i>
-                      1422
-                    </span>
-                  </div>
-                </div>
-                <img className="img-wrap" src={articleImg} width="150" height="100" alt="no pic" />
-              </ArticleItem>
-              <ArticleItem>
-                <div className="content">
-                  <a href="/" className="title">
-                    <h4>浙大学霸作息表曝光：世界本不公平，你有多努力，就有多特殊</h4>
-                  </a>
-                  <p className="desc">头等舱可以优先登机， 银行VIP可以免排队， 演唱会最贵的门票位置最好， ...... 这个世界，似乎从来不平等。 但是，你有多努力，就有多特殊...</p>
-                  <div className="meta">
-                    <span className="zuanshi-meta">
-                      <i className="iconfont icon-zuanshi"></i>
-                      89.6
-                    </span>
-                    <span className="author-meta">
-                      多哥朵妹
-                    </span>
-                    <span className="comment-meta">
-                      <i className="iconfont icon-liaotianqipaoshixin"></i>
-                      123
-                    </span>
-                    <span className="collect-meta">
-                      <i className="iconfont icon-collect-active"></i>
-                      1422
-                    </span>
-                  </div>
-                </div>
-                <img className="img-wrap" src={articleImg} width="150" height="100" alt="no pic" />
-              </ArticleItem>
-              <ArticleItem>
-                <div className="content">
-                  <a href="/" className="title">
-                    <h4>浙大学霸作息表曝光：世界本不公平，你有多努力，就有多特殊</h4>
-                  </a>
-                  <p className="desc">头等舱可以优先登机， 银行VIP可以免排队， 演唱会最贵的门票位置最好， ...... 这个世界，似乎从来不平等。 但是，你有多努力，就有多特殊...</p>
-                  <div className="meta">
-                    <span className="zuanshi-meta">
-                      <i className="iconfont icon-zuanshi"></i>
-                      89.6
-                    </span>
-                    <span className="author-meta">
-                      多哥朵妹
-                    </span>
-                    <span className="comment-meta">
-                      <i className="iconfont icon-liaotianqipaoshixin"></i>
-                      123
-                    </span>
-                    <span className="collect-meta">
-                      <i className="iconfont icon-collect-active"></i>
-                      1422
-                    </span>
-                  </div>
-                </div>
-                <img className="img-wrap" src={articleImg} width="150" height="100" alt="no pic" />
-              </ArticleItem>
-              <ArticleItem>
-                <div className="content">
-                  <a href="/" className="title">
-                    <h4>浙大学霸作息表曝光：世界本不公平，你有多努力，就有多特殊</h4>
-                  </a>
-                  <p className="desc">头等舱可以优先登机， 银行VIP可以免排队， 演唱会最贵的门票位置最好， 
-                  ...... 这个世界，似乎从来不平等。 但是，你有多努力，就有多特殊...</p>
-                  <div className="meta">
-                    <span className="zuanshi-meta">
-                      <i className="iconfont icon-zuanshi"></i>
-                      89.6
-                    </span>
-                    <span className="author-meta">
-                      多哥朵妹
-                    </span>
-                    <span className="comment-meta">
-                      <i className="iconfont icon-liaotianqipaoshixin"></i>
-                      123
-                    </span>
-                    <span className="collect-meta">
-                      <i className="iconfont icon-collect-active"></i>
-                      1422
-                    </span>
-                  </div>
-                </div>
-                <img className="img-wrap" src={articleImg} width="150" height="100" alt="no pic" />
-              </ArticleItem>
+              {this.renderArticleList()}
             </ArticleList>
           </ArticleWrapper>
         </IndexLeft>
@@ -156,76 +52,7 @@ class IndexPage extends Component {
                 </div>
               </div>
             <AuthorList>
-              <li>
-                <div className="img-wrapper">
-                  <img src={AvatarImg} alt="no pic" />
-                </div>
-                <div className="main-content">
-                  <div className="top">
-                    <p className="left">卢璐说</p>
-                    <p className="right">+关注</p>
-                  </div>
-                  <div className="meta">
-                    <p>写了1265.5k字 · 27.5k喜欢</p>
-                  </div>
-                </div>
-              </li>
-              <li>
-                <div className="img-wrapper">
-                  <img src={AvatarImg} alt="no pic" />
-                </div>
-                <div className="main-content">
-                  <div className="top">
-                    <p className="left">卢璐说</p>
-                    <p className="right">+关注</p>
-                  </div>
-                  <div className="meta">
-                    <p>写了1265.5k字 · 27.5k喜欢</p>
-                  </div>
-                </div>
-              </li>
-              <li>
-                <div className="img-wrapper">
-                  <img src={AvatarImg} alt="no pic" />
-                </div>
-                <div className="main-content">
-                  <div className="top">
-                    <p className="left">卢璐说</p>
-                    <p className="right">+关注</p>
-                  </div>
-                  <div className="meta">
-                    <p>写了1265.5k字 · 27.5k喜欢</p>
-                  </div>
-                </div>
-              </li>
-              <li>
-                <div className="img-wrapper">
-                  <img src={AvatarImg} alt="no pic" />
-                </div>
-                <div className="main-content">
-                  <div className="top">
-                    <p className="left">卢璐说</p>
-                    <p className="right">+关注</p>
-                  </div>
-                  <div className="meta">
-                    <p>写了1265.5k字 · 27.5k喜欢</p>
-                  </div>
-                </div>
-              </li>
-              <li>
-                <div className="img-wrapper">
-                  <img src={AvatarImg} alt="no pic" />
-                </div>
-                <div className="main-content">
-                  <div className="top">
-                    <p className="left">卢璐说</p>
-                    <p className="right">+关注</p>
-                  </div>
-                  <div className="meta">
-                    <p>写了1265.5k字 · 27.5k喜欢</p>
-                  </div>
-                </div>
-              </li>
+              {this.renderAuthorList()}
             </AuthorList>
           </RecommendAuthorWrapper>
           <MoreAuthorBtn>查看全部 &gt;</MoreAuthorBtn>
@@ -234,8 +61,9 @@ class IndexPage extends Component {
     )
   }
 
-  componentDidMount() {
-    this.props.getArticleList()
+  componentWillMount() {
+    this.props.getArticle()
+    this.props.getAuthor()
   }
 
   handleChange = () => {
@@ -247,14 +75,68 @@ class IndexPage extends Component {
     } else {
       this.changeIcon.style.transform = 'rotate(360deg)'
     }
-    let page = this.props.currentPage + 1 > this.props.totalPage ? 1 : this.props.currentPage + 1
-    console.log(page)
+    // let page = this.props.currentPage + 1 > this.props.totalPage ? 1 : this.props.currentPage + 1
+  }
+
+  renderArticleList = () => {
+    return this.props.articleList.map((item, index) => {
+      return (
+        <ArticleItem key={index}>
+          <div className="content">
+            <a href="/" className="title">
+              <h4>{item.title}</h4>
+            </a>
+            <p className="desc">{item.desc}</p>
+            <div className="meta">
+              <span className="zuanshi-meta">
+                <i className="iconfont icon-zuanshi"></i>
+                {item.zuanshiNum}
+              </span>
+              <span className="author-meta">
+                {item.author}
+              </span>
+              <span className="comment-meta">
+                <i className="iconfont icon-liaotianqipaoshixin"></i>
+                {item.commentNum}
+              </span>
+              <span className="collect-meta">
+                <i className="iconfont icon-collect-active"></i>
+                {item.collectNum}
+              </span>
+            </div>
+          </div>
+          <img className="img-wrap" src={articleImg} width="150" height="100" alt="no pic" />
+        </ArticleItem>
+      )
+    })
+  }
+
+  renderAuthorList = () => {
+    return this.props.authorList.map(item => {
+      return (
+        <li key={item.id}>
+          <div className="img-wrapper">
+            <img src={AvatarImg} alt="no pic" />
+          </div>
+          <div className="main-content">
+            <div className="top">
+              <p className="left">{item.nickname}</p>
+              <p className="right">+关注</p>
+            </div>
+            <div className="meta">
+              <p>写了{item.total_wordage/1000}k字 · {item.total_likes_count/ 1000}k喜欢</p>
+            </div>
+          </div>
+        </li>
+      )
+    })
   }
 }
 
 const mapStateToProps = (state) => {
   return {
-    articleList: state.getIn(['index', 'articleList'])
+    articleList: state.getIn(['index', 'articleList']),
+    authorList: state.getIn(['index', 'authorList'])
   }
 }
 
@@ -262,6 +144,10 @@ const mapDispatchToProps = (dispatch) => {
   return {
     getArticle() {
       const action = getArticleListAction()
+      dispatch(action)
+    },
+    getAuthor() {
+      const action = getAuthorListAction()
       dispatch(action)
     }
   }

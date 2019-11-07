@@ -13,6 +13,13 @@ export const getHeaderList = () => {
 export const getArticleList = () => {
   return axios.request({
     method: 'GET',
-    url: 'recommendAuthor'
+    url: 'articleList'
+  })
+}
+
+export const getAuthorList = () => {
+  return axios.request({
+    method: 'GET',
+    url: 'authorList'
   })
 }
