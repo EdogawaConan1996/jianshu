@@ -9,3 +9,10 @@ export const getHeaderList = () => {
     url: 'headerList'
   })
 }
+
+export const getArticleList = () => {
+  return axios.request({
+    method: 'GET',
+    url: 'recommendAuthor'
+  })
+}

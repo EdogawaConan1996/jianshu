@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import {IndexWrapper, IndexLeft, IndexRight, BannerImg, BroadWrapper, BroadItem, DownLoadAppWrapper, AdLink, ArticleWrapper, ArticleList, ArticleItem, RecommendAuthorWrapper, ChangeIcon, MoreAuthorBtn} from './style'
 import broad1Img from '../../assets/img/broad1.png'
 import broad2Img from '../../assets/img/broad2.png'
@@ -8,10 +9,11 @@ import qrCode from '../../assets/img/qrcode.png'
 import articleImg from '../../assets/img/article/13686029-0cf7ba315bd577cc.jpg'
 import { AuthorList } from '../../components/header/style'
 import AvatarImg from '../../assets/img/avatar/189d69dd-af7c-4290-9e2c-89e98acf3603.webp'
+import { getArticleListAction } from '../../store/index/action.creator'
 
 class IndexPage extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state ={}
     this.changeIcon = null
   }
@@ -232,6 +234,10 @@ class IndexPage extends Component {
     )
   }
 
+  componentDidMount() {
+    this.props.getArticleList()
+  }
+
   handleChange = () => {
     const transform = this.changeIcon.style.transform
     if (transform) {
@@ -246,4 +252,21 @@ class IndexPage extends Component {
   }
 }
 
-export default IndexPage;
+const mapStateToProps = (state) => {
+  return {
+    articleList: state.getIn(['index', 'articleList'])
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    getArticle() {
+      const action = getArticleListAction()
+      dispatch(action)
+    }
+  }
+}
+
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(IndexPage);
